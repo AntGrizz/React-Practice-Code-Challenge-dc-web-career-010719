@@ -1,18 +1,21 @@
 import React, { Fragment } from 'react';
 
 const Sushi = props => {
-
   let isSushiEaten = sushi => {
-    return props.eatenSushi.includes(sushi)
-  }
+    return props.eatenSushi.includes(sushi);
+  };
 
-  let handleClick = (sushi) => {
-    if (sushi.price > props.budget){
-      alert("You need bread")
+  let handleClick = sushi => {
+    if (sushi.price > props.budget) {
+      alert('You need bread');
     } else {
-      props.afterEatSushi(sushi)
+      if (isSushiEaten(sushi) === false) {
+        props.afterEatSushi(sushi);
+      } else {
+        alert("You can't eat an empty plate");
+      }
     }
-  }
+  };
 
   return (
     <div className="sushi">
